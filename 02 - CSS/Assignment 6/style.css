@@ -14,6 +14,7 @@
   --border: #d6d6d6;
   --ctaBanner: #1e3448;
   --fadedBlue: #3284ff21;
+  --cardBorder: #005ae25c;
 }
 
 body {
@@ -288,4 +289,104 @@ h5 {
   position: absolute;
   bottom: 0;
   right: 0;
+}
+
+#pricing {
+  padding: 100px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.pricing-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 40px; */
+}
+
+.textAlignCenter {
+  justify-content: center;
+  align-items: center;
+}
+
+.pricing-para {
+  text-align: center;
+  max-width: 450px;
+}
+
+.secondary-btn2 {
+  padding: 12px 24px;
+  outline: none;
+  border: 1px solid var(--blueBG);
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  max-width: fit-content;
+  color: var(--blueBG);
+}
+
+.btn-wrap {
+  display: flex;
+  gap: 30px;
+}
+
+.base-card,
+.featured-card {
+  max-width: 410px;
+  padding: 60px 85px;
+  border: 1px solid var(--cardBorder);
+  width: fit-content;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.featured-card {
+  background-color: var(--ctaBanner);
+  border: none;
+  border-radius: 15px;
+  padding: 120px 85px;
+
+  & p {
+    color: var(--white);
+  }
+}
+
+.base-card-2 {
+  max-width: 410px;
+  padding: 60px 85px;
+  border: 1px solid var(--cardBorder);
+  width: fit-content;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px !important;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+.advantage {
+  display: flex;
+  gap: 12px;
+  padding: 8px 0px;
+}
+
+.advantages {
+  margin-top: 20px;
+}
+
+.card-type {
+  font-size: 18px;
+  padding-bottom: 20px;
+}
+
+.card-heading {
+  font-size: 35px;
+  color: var(--textBlack);
+  font-weight: 800;
+}
+
+.card-description {
+  font-size: 18px;
+  padding-top: 10px;
 }
