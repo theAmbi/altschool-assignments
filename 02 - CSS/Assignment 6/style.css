@@ -15,6 +15,7 @@
   --ctaBanner: #1e3448;
   --fadedBlue: #3284ff21;
   --cardBorder: #005ae25c;
+  --formBlueBorder: #3284ff;
 }
 
 body {
@@ -129,6 +130,88 @@ h6 {
   justify-content: center;
   align-items: center;
   padding-top: 15px;
+}
+
+#cta-1 {
+  width: 100%;
+  height: 500px;
+  background-color: var(--ctaBanner);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#cta-vector-1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#cta-vector-2 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.cta-form-flex {
+  display: flex;
+  gap: 20px;
+}
+
+.cta-form {
+  background-color: var(--white);
+  padding: 25px 30px;
+  max-width: 470px;
+  width: 100%;
+  border-radius: 14px;
+}
+
+.cta-top {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 15px;
+}
+
+.cta-top input,
+.cta-top select {
+  width: 390px;
+  max-width: 100%;
+  height: 55px;
+  padding: 5px 14px;
+  border: 1px solid var(--formBlueBorder);
+  color: var(--formBlueBorder);
+  border-radius: 10px;
+}
+
+.cta-form-input ::placeholder {
+  color: var(--formBlueBorder);
+  width: 100% !important;
+}
+
+.cta-bottom {
+  padding-bottom: 30px;
+}
+
+.cta-bottom a {
+  width: 100%;
+  font-size: 12px;
+  padding: 10px 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--blueBG);
+  color: var(--white);
+  border-radius: 30px;
+  margin: 20px 0px;
+}
+
+.cta-bottom p {
+  font-size: 13px;
+  color: var(--blueBG);
+  max-width: 340px;
+  padding-left: 10px;
 }
 
 #cta-2 {
