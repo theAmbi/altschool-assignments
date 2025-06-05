@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+/* @theme {
+  --color-main-bg: #fcf5e5;
+  --color-main-darks: #212121;
+  --color-main-text: #212121b3;
+
+  --font-poppins: Poppins, sans-serif;
+} */
+
+#root {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
