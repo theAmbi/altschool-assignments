@@ -65,13 +65,12 @@ function App() {
 
   return (
     <section className='w-full h-screen'>
-      <form action={''} onSubmit={handleSubmit}>
+      <form action={''} onSubmit={handleSubmit} className='lg:hidden'>
         <div className='relative'>
-          <img src={mobileBG} className='w-full' />
+          <img src={mobileBG} className='w-full md:h-[35vh]' />
 
-          {/* Center wrapper that doesn't interfere with internal positioning */}
           <div className="absolute inset-0 flex items-center justify-center shadow-2xl">
-            <div className="relative scale-[0.8] ml-10"> {/* This becomes your new reference point */}
+            <div className="relative scale-[0.8] ml-10">
 
               {/* Card back */}
               <div className='w-fit relative'>
@@ -79,7 +78,6 @@ function App() {
                 <p className='absolute right-16 top-[108px] text-right text-sm text-white font-medium tracking-widest'>{cvc}</p>
               </div>
 
-              {/* Card front - positioned relative to the wrapper above */}
               <div className='w-fit absolute top-[136px] -left-24'>
                 <div className='w-fit relative'>
                   <img src={cardLogo} className='absolute top-10 px-6' />
@@ -96,35 +94,71 @@ function App() {
           </div>
         </div>
 
-        {!formSubmitted && <div className="details mt-20 flex flex-col gap-10 px-10 ">
+        {!formSubmitted && <div className="details mt-20 flex flex-col gap-10 px-10 md:max-w-2xl md:mx-auto">
           <div className="cardholder flex flex-col gap-3">
             <label htmlFor="cardholder-name" className='text-sm uppercase font-medium tracking-widest text-purple-950'>Cardholder name</label>
-            <input type="text" placeholder='e.g Jane Appleseed' maxLength={32} className={`rounded-md border w-full px-3 py-4 text-lg font-medium capitalize  placeholder:text-md placeholder:font-medium placeholder:text-grey-200 outline-none focus:ring-2 focus:ring-purple-200 transition-all duration-300 ease-in-out ${fullName ? 'border-grey-200' : 'border-red-500'}`} value={fullName} onChange={(e) => setFullName(e.target.value)} />
+            <input type="text" placeholder='e.g Jane Appleseed' maxLength={32} className={`rounded-md border w-full px-3 py-4 text-lg font-medium capitalize  placeholder:text-md placeholder:font-medium placeholder:text-grey-200 outline-none focus:ring-2 focus:ring-purple-200 transition-all duration-300 ease-in-out ${!fullName && formSubmitted ? 'border-red-500' : 'border-grey-200'}`} value={fullName} onChange={(e) => setFullName(e.target.value)} />
           </div>
 
           <div className="cardnumber flex flex-col gap-3">
             <label htmlFor="card-number" className='text-sm uppercase font-medium tracking-widest text-purple-950'>Card number</label>
-            <input type="text" placeholder='e.g 1234 5678 9123 000' className={` rounded-md border w-full px-3 py-4 text-lg font-medium placeholder:text-md placeholder:font-medium placeholder:text-grey-200 outline-none focus:ring-2 focus:ring-purple-200 transition-all duration-300 ease-in-out ${cardNumber ? 'border-grey-200' : 'border-red-500'}`} value={cardNumber} onChange={handleCardNumberChange} />
+            <input type="text" placeholder='e.g 1234 5678 9123 000' className={` rounded-md border w-full px-3 py-4 text-lg font-medium placeholder:text-md placeholder:font-medium placeholder:text-grey-200 outline-none focus:ring-2 focus:ring-purple-200 transition-all duration-300 ease-in-out ${!fullName && formSubmitted ? 'border-red-500' : 'border-grey-200'}`} value={cardNumber} onChange={handleCardNumberChange} />
           </div>
 
           <div className='flex items-center justify-between gap-5'>
             <div className="expiry flex flex-col gap-3 w-1/2 ">
               <label htmlFor="exp-date" className='text-sm uppercase font-medium tracking-widest text-purple-950'>Exp. date (mm / yy)</label>
               <div className='flex gap-3'>
-                <input type="number" placeholder='MM' maxLength={2} className={`rounded-md border w-24 px-3 py-4 text-lg font-medium placeholder:text-md placeholder:font-medium placeholder:text-grey-200 outline-none focus:ring-2 focus:ring-purple-200 transition-all duration-300 ease-in-out ${expiryMonth ? 'border-grey-200' : 'border-red-500'}`} value={expiryMonth} onChange={handleMonthChange} />
-                <input type="number" placeholder='YY' maxLength={2} className={`rounded-md border w-24 px-3 py-4 text-lg font-medium placeholder:text-md placeholder:font-medium placeholder:text-grey-200 outline-none focus:ring-2 focus:ring-purple-200 transition-all duration-300 ease-in-out ${expiryYear ? 'border-grey-200' : 'border-red-500'}`} value={expiryYear} onChange={handleYearChange} />
+                <input type="number" placeholder='MM' maxLength={2} className={`rounded-md border w-24 px-3 py-4 text-lg font-medium placeholder:text-md placeholder:font-medium placeholder:text-grey-200 outline-none md:w-36 focus:ring-2 focus:ring-purple-200 transition-all duration-300 ease-in-out  ${!expiryMonth && formSubmitted ? 'border-red-500' : 'border-grey-200'}`} value={expiryMonth} onChange={handleMonthChange} />
+                <input type="number" placeholder='YY' maxLength={2} className={`rounded-md border w-24 px-3 py-4 text-lg font-medium placeholder:text-md placeholder:font-medium placeholder:text-grey-200 outline-none md:w-36 focus:ring-2 focus:ring-purple-200 transition-all duration-300 ease-in-out ${!expiryYear && formSubmitted ? 'border-red-500' : 'border-grey-200'}`} value={expiryYear} onChange={handleYearChange} />
               </div>
 
             </div>
 
             <div className="cvc flex flex-col gap-3 w-1/2">
               <label htmlFor="exp-date" className='text-sm uppercase font-medium tracking-widest text-purple-950'>cvc</label>
-              <input type="number" placeholder='e.g 123' maxLength={3} className={`rounded-md border w-full px-3 py-4 text-lg font-medium placeholder:text-md placeholder:font-medium placeholder:text-grey-200 outline-none focus:ring-2 focus:ring-purple-200 transition-all duration-300 ease-in-out ${cvc ? 'border-grey-200' : 'border-red-500'}`} value={cvc} onChange={handleCVCChange} />
+              <input type="number" placeholder='e.g 123' maxLength={3} className={`rounded-md border w-full px-3 py-4 text-lg font-medium placeholder:text-md placeholder:font-medium placeholder:text-grey-200 outline-none focus:ring-2 focus:ring-purple-200 transition-all duration-300 ease-in-out ${!cvc && formSubmitted ? 'border-red-500' : 'border-grey-200'}`} value={cvc} onChange={handleCVCChange} />
             </div>
           </div>
 
           <button type='submit' className='w-full py-4 font-medium text-white bg-purple-950 text-center rounded-lg text-lg cursor-pointer hover:bg-purple-950/90'>Confirm</button>
         </div>}
+      </form>
+
+      <form action="" className='hidden lg:flex lg:h-screen lg:overflow-hidden'>
+        <div className='relative'>
+          <img src={desktopBG} className='h-screen' />
+
+          <div className="absolute top-0 bottom-0 left-32 right-auto flex items-center justify-center ">
+            <div className="relative shadow-2xl flex">
+
+
+              {/* card front  */}
+              <div className='w-fit absolute top-[136px] -left-24'>
+                <div className='w-fit relative'>
+                  <img src={cardLogo} className='absolute top-10 px-6' />
+                  <img src={cardFront} alt="card-front" />
+                  <p className='absolute w-full px-6 bottom-[72px] text-left text-white text-3xl font-medium tracking-widest'>{cardNumber}</p>
+                  <div className='w-full text-white text-sm font-semibold uppercase tracking-wide flex justify-between items-center px-6 absolute bottom-7'>
+                    <p>{fullName}</p>
+                    <p>{expiryMonth}/{expiryYear}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card back */}
+              <div className='w-fit relative'>
+                <img src={cardBack} alt="card-back" />
+                <p className='absolute right-16 top-[108px] text-right text-sm text-white font-medium tracking-widest'>{cvc}</p>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+        {/* cards / content  */}
+
       </form>
 
       {
